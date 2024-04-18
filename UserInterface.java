@@ -50,6 +50,34 @@ public class UserInterface {
                     .print("\n(Enter the number of the next item you'd like to order, or type 'done' when finished): ");
             input = scanner.nextLine();
         }
+    } 
+    
+    public void checkout() {
+        double totalPrice = foodOrder.getTotalPrice();
+        System.out.println("\nYour order total price is: $" + totalPrice);
+
+        if (totalPrice > 0) {
+            System.out.println("Select a payment method:");
+            System.out.println("1. Credit card");
+            System.out.println("2. Debit card");
+            System.out.println("3. Benefitpay");
+            String paymentMethod;
+            do {
+                System.out.print("Select a number between (1 to 3): ");
+                paymentMethod = scanner.next();
+                if (paymentMethod.equals("1") || paymentMethod.equals("2") || paymentMethod.equals("3")) {
+                    int paymentNumber = Integer.parseInt(paymentMethod);
+                    payment.processPayment(totalPrice, paymentNumber);
+                    break;
+                } else {
+                    System.out.println("invalid payment method");
+                }
+
+            } while (!(paymentMethod.equals("1") || paymentMethod.equals("2") || paymentMethod.equals("3")));
+
+        } else {
+            System.out.println("sorry, you don't have any item to pay for");
+        }
     }
 
 }
