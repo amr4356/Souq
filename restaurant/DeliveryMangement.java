@@ -25,7 +25,7 @@ public class DeliveryMangement {
             if (item.getName().equals("Water")) {
                 counter5++;
             }
-            if (item.getName().equals("Coffe")) {
+            if (item.getName().equals("Coffee")) {
                 counter6++;
             }
 
@@ -46,7 +46,7 @@ public class DeliveryMangement {
             System.out.println("- " + counter5 + " Water");
         }
         if (counter6 != 0) {
-            System.out.println("- " + counter6 + " Coffe");
+            System.out.println("- " + counter6 + " Coffee");
         }
     }
 
