@@ -80,4 +80,12 @@ public class UserInterface {
         }
     }
 
+    public void deliveryScheduling() {
+        double totalPrice = foodOrder.getTotalPrice();
+        if (totalPrice != 0) {
+            deliveryManagement.processDelivery(foodOrder.getOrderItems());
+        } else {
+            System.out.println("sorry, you don't have any item to schedule a delivery for it");
+        }
+    }
 }
