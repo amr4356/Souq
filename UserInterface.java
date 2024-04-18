@@ -26,4 +26,30 @@ public class UserInterface {
         }
     }
 
+    public void placeOrder() {
+        System.out.print("\n(Enter the number of the item you'd like to order, or type 'done' when finished): ");
+        String input = scanner.nextLine();
+
+        while (!input.equals("done")) {
+            if (input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5")
+                    || input.equals("6")) {
+                int itemNumber = Integer.parseInt(input);
+                MenuItem item = menu.getMenuItem(itemNumber - 1);
+                String itemName = item.getName();
+                double itemPrice = item.getPrice();
+                foodOrder.addItemToOrder(item);
+                System.out.println("\nItem " + itemNumber + " " + itemName + " with $" + itemPrice
+                        + " price has been added to the cart");
+                System.out.println("The total Price of your current cart= $" + foodOrder.getTotalPrice());
+            } else {
+                System.out.println(
+                        "\nInvalid number you have to choose between(1 and " + menu.getMenuItems().size() + ")");
+                System.out.println("The total Price of your current cart= $" + foodOrder.getTotalPrice());
+            }
+            System.out
+                    .print("\n(Enter the number of the next item you'd like to order, or type 'done' when finished): ");
+            input = scanner.nextLine();
+        }
+    }
+
 }
