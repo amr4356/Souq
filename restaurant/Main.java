@@ -5,7 +5,7 @@ public class Main {
         Menu menu = new Menu();
         FoodOrder foodOrder = new FoodOrder();
         Payment payment = new Payment();
-        DeliveryMangement deliveryManagement = new DeliveryMangement();
+        DeliveryManagement deliveryManagement = new DeliveryManagement();
         UserInterface userInterface = new UserInterface(menu, foodOrder, payment, deliveryManagement);
 
         userInterface.displayMenu();

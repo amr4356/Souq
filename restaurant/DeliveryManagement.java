@@ -2,7 +2,7 @@ package restaurant;
 
 import java.util.ArrayList;
 
-public class DeliveryMangement {
+public class DeliveryManagement {
     public void processDelivery(ArrayList<MenuItem> items) {
 
         System.out.println("\nScheduling delivery...");

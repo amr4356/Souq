@@ -8,9 +8,9 @@ public class UserInterface {
     private Menu menu;
     private FoodOrder foodOrder;
     private Payment payment;
-    private DeliveryMangement deliveryManagement;
+    private DeliveryManagement deliveryManagement;
 
-    public UserInterface(Menu menu, FoodOrder foodOrder, Payment payment, DeliveryMangement deliveryManagement) {
+    public UserInterface(Menu menu, FoodOrder foodOrder, Payment payment, DeliveryManagement deliveryManagement) {
         this.scanner = new Scanner(System.in);
         this.menu = menu;
         this.foodOrder = foodOrder;
