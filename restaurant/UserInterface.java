@@ -1,3 +1,4 @@
+// This class represents the user interface for interacting with the restaurant system.
 package restaurant;
 
 import java.util.ArrayList;
@@ -5,11 +6,12 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner;
-    private Menu menu;
-    private FoodOrder foodOrder;
-    private Payment payment;
-    private DeliveryManagement deliveryManagement;
+    private Menu menu; // Menu object containing food items
+    private FoodOrder foodOrder; // FoodOrder object to manage the customer's order
+    private Payment payment; // Payment object to handle payment processing
+    private DeliveryManagement deliveryManagement; // DeliveryManagement object for scheduling deliveries
 
+    // Constructor to initialize UserInterface with required objects
     public UserInterface(Menu menu, FoodOrder foodOrder, Payment payment, DeliveryManagement deliveryManagement) {
         this.scanner = new Scanner(System.in);
         this.menu = menu;
@@ -18,6 +20,7 @@ public class UserInterface {
         this.deliveryManagement = deliveryManagement;
     }
 
+    // Display the menu items available
     public void displayMenu() {
         System.out.println("Welcome to our restaurant\nMenu:");
         for (int i = 0; i < menu.getMenuItems().size(); i++) {
@@ -26,6 +29,7 @@ public class UserInterface {
         }
     }
 
+    // Allow the user to place an order by selecting menu items
     public void placeOrder() {
         System.out.print("\n(Enter the number of the item you'd like to order, or type 'done' when finished): ");
         String input = scanner.nextLine();
@@ -52,6 +56,7 @@ public class UserInterface {
         }
     } 
     
+    // Proceed to checkout and handle payment processing
     public void checkout() {
         double totalPrice = foodOrder.getTotalPrice();
         System.out.println("\nYour order total price is: $" + totalPrice);
@@ -80,6 +85,7 @@ public class UserInterface {
         }
     }
 
+    // Schedule delivery if there are items in the order
     public void deliveryScheduling() {
         double totalPrice = foodOrder.getTotalPrice();
         if (totalPrice != 0) {
