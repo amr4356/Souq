@@ -21,14 +21,118 @@ public class UserInterface {
     }
 
     // Display the menu items available
-    public void displayMenu() {
-        System.out.println("Welcome to our restaurant\nMenu:");
-        for (int i = 0; i < menu.getMenuItems().size(); i++) {
-            System.out
-                    .println((i + 1) + ". " + menu.getMenuItem(i).getName() + " - $" + menu.getMenuItem(i).getPrice());
-        }
-    }
+    int pas = 12345678; // this is the password
 
+    public void manageAndDisplayMenu() {
+        String itemName = "";
+        double itemPrice = 0;
+        int num = 0;
+        System.out.println("----------------------------------------");
+        System.out.println();
+        System.out.println("Are you the owner of the restaurant(yes/no)?");
+        String s = scanner.nextLine();
+        while (!s.equals("yes") && !s.equals("no")) {
+            System.out.println();
+            System.out.println("Are you the owner of the restaurant(yes/no)?");
+            s = scanner.nextLine();
+        }
+
+        if (s.equals("yes")) {
+            System.out.println("----------------------------------------");
+            System.out.println();
+            System.out.println("Enter the password:");
+            int ps = scanner.nextInt();
+            if (ps == pas) {
+                System.out.println("----------------------------------------");
+                System.out.println();
+                System.out.println("This is the current menu of the restaurant:");
+                for (int i = 0; i < menu.getMenuSize(); i++) {
+                    System.out
+                            .println((i + 1) + ". " + menu.getMenuItem(i).getName() + " - $"
+                                    + menu.getMenuItem(i).getPrice());
+                }
+                System.out.println();
+                System.out.println("----------------------------------------");
+
+                System.out.println("Do you want to add or remove items(yes/no)? ");
+                String sr = scanner.next();
+                while (!sr.equals("yes") && !sr.equals("no")) {
+                    System.out.println("Do you want to add or remove items(yes/no)? ");
+                    sr = scanner.next();
+                }
+                if (sr.equals("yes")) {
+                    System.out.println("----------------------------------------");
+                    System.out.println();
+                    System.out.println("which one do you want (add or remove)?");
+                    String sr1 = scanner.next();
+                    while (!sr1.equals("add") && !sr1.equals("remove")) {
+                        System.out.println("which one do you want (add or remove)?");
+                        sr1 = scanner.next();
+                    }
+
+                    if (sr1.equals("add")) {
+                        System.out.println("----------------------------------------");
+                        System.out.println();
+                        System.out.println("how many items do you want to add?");
+                        num = scanner.nextInt();
+                        for (int i = 0; i < num; i++) {
+                            System.out.print("Enter the name of item" + (i + 1) + ":");
+                            itemName = scanner.next();
+                            System.out.print("Enter the price of item" + (i + 1) + ":");
+                            itemPrice = scanner.nextDouble();
+                            menu.addMenuItem(itemName, itemPrice);
+                        }
+                        System.out.println();
+                        System.out.println("----------------------------------------");
+                        System.out.println("You have been redirected to Menu Page");
+                        System.out.println("----------------------------------------");
+                    } else {
+                        System.out.println("----------------------------------------");
+                        System.out.println();
+                        System.out.println("how many items do you want to remove?");
+                        num = scanner.nextInt();
+                        for (int i = 0; i < num; i++) {
+                            System.out.print("Enter the index of item" + (i + 1) + ":");
+                            int index = scanner.nextInt();
+
+                            menu.removeMenuItem(index);
+
+                        }
+                        System.out.println();
+                        System.out.println("----------------------------------------");
+                        System.out.println("You have been redirected to Menu Page");
+                        System.out.println("----------------------------------------");
+                    }
+
+                } else {
+                    System.out.println();
+                    System.out.println("----------------------------------------");
+                    System.out.println("You have been redirected to Menu Page");
+                    System.out.println("----------------------------------------");
+                }
+
+            } else {
+                System.out.println();
+                System.out.println("----------------------------------------");
+                System.out.println("invalid password");
+                System.out.println("You have been redirected to Menu Page");
+                System.out.println("----------------------------------------");
+            }
+        }
+        System.out.println();
+        System.out.println("----------------------------------------");
+
+        System.out.println("Welcome to our restaurant\nMenu:");
+        for (int i = 0; i < menu.getMenuSize(); i++) {
+            System.out
+
+                    .println((i + 1) + ". " + menu.getMenuItem(i).getName() + " - $"
+                            + menu.getMenuItem(i).getPrice());
+        }
+        System.out.println("----------------------------------------");
+
+    }
+    
     // Allow the user to place an order by selecting menu items
     public void placeOrder() {
         System.out.print("\n(Enter the number of the item you'd like to order, or type 'done' when finished): ");

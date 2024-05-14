@@ -17,6 +17,28 @@ public class MenuTest {
     }
 
     @Test
+    public void testAddMenuItem() {
+        int initialSize = menu.getMenuSize();
+        menu.addMenuItem("Pasta", 12.0);
+        int newSize = menu.getMenuSize();
+        Assert.assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
+    public void testRemoveMenuItem() {
+        int initialSize = menu.getMenuSize();
+        menu.removeMenuItem(0); // Assuming "Pizza" is at index 0
+        int newSize = menu.getMenuSize();
+        Assert.assertEquals(initialSize - 1, newSize);
+    }
+
+    @Test
+    public void testGetMenuSize() {
+        int size = menu.getMenuSize();
+        Assert.assertEquals(6, size);
+    }
+
+    @Test
     public void testGetMenuItems() {
         ArrayList<MenuItem> menuItems = menu.getMenuItems();
         Assert.assertNotNull(menuItems);

@@ -8,7 +8,7 @@ public class Main {
         DeliveryManagement deliveryManagement = new DeliveryManagement();
         UserInterface userInterface = new UserInterface(menu, foodOrder, payment, deliveryManagement);
 
-        userInterface.displayMenu();
+        userInterface.manageAndDisplayMenu();
         userInterface.placeOrder();
         userInterface.checkout();
         userInterface.deliveryScheduling();
