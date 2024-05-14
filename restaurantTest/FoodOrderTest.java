@@ -5,6 +5,8 @@ import org.junit.*;
 import restaurant.FoodOrder;
 import restaurant.MenuItem;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 
 public class FoodOrderTest {
@@ -37,6 +39,38 @@ public class FoodOrderTest {
         foodOrder.addItemToOrder(menuItem2);
 
         Assert.assertEquals(18.0, foodOrder.getTotalPrice(), 0.01);
+    }
+
+    @Test
+    public void testRemoveItemFromOrder() {
+        foodOrder.addItemToOrder(menuItem1);
+        foodOrder.addItemToOrder(menuItem2);
+        foodOrder.removeItemFromOrder(menuItem1);
+        assertEquals(1, foodOrder.getOrderSize());
+        assertEquals(8.0, foodOrder.getTotalPrice());
+    }
+
+    @Test
+    public void testClearOrder() {
+        foodOrder.addItemToOrder(menuItem1);
+        foodOrder.addItemToOrder(menuItem2);
+        foodOrder.clearOrder();
+        assertEquals(0, foodOrder.getOrderSize());
+        assertEquals(0.0, foodOrder.getTotalPrice());
+    }
+
+    @Test
+    public void testGetItemQuantity() {
+        foodOrder.addItemToOrder(menuItem1);
+        foodOrder.addItemToOrder(menuItem2);
+        assertEquals(1, foodOrder.getItemQuantity(menuItem1));
+    }
+
+    @Test
+    public void testGetOrderSize() {
+        foodOrder.addItemToOrder(menuItem1);
+        foodOrder.addItemToOrder(menuItem2);
+        assertEquals(2, foodOrder.getOrderSize());
     }
 
 }

@@ -132,16 +132,19 @@ public class UserInterface {
         System.out.println("----------------------------------------");
 
     }
-    
+
     // Allow the user to place an order by selecting menu items
     public void placeOrder() {
+        System.out.println();
         System.out.print("\n(Enter the number of the item you'd like to order, or type 'done' when finished): ");
-        String input = scanner.nextLine();
+        String input1 = scanner.next();
 
-        while (!input.equals("done")) {
-            if (input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5")
-                    || input.equals("6")) {
-                int itemNumber = Integer.parseInt(input);
+        while (!input1.equals("done")) {
+
+            if (input1.matches("\\d+") && Integer.parseInt(input1) >= 1
+                    && Integer.parseInt(input1) <= menu.getMenuSize()) {
+
+                int itemNumber = Integer.parseInt(input1);
                 MenuItem item = menu.getMenuItem(itemNumber - 1);
                 String itemName = item.getName();
                 double itemPrice = item.getPrice();
@@ -151,15 +154,15 @@ public class UserInterface {
                 System.out.println("The total Price of your current cart= $" + foodOrder.getTotalPrice());
             } else {
                 System.out.println(
-                        "\nInvalid number you have to choose between(1 and " + menu.getMenuItems().size() + ")");
+                        "\nInvalid number you have to choose between(1 and " + menu.getMenuSize() + ")");
                 System.out.println("The total Price of your current cart= $" + foodOrder.getTotalPrice());
             }
             System.out
                     .print("\n(Enter the number of the next item you'd like to order, or type 'done' when finished): ");
-            input = scanner.nextLine();
+            input1 = scanner.next();
         }
-    } 
-    
+    }
+
     // Proceed to checkout and handle payment processing
     public void checkout() {
         double totalPrice = foodOrder.getTotalPrice();
@@ -193,7 +196,25 @@ public class UserInterface {
     public void deliveryScheduling() {
         double totalPrice = foodOrder.getTotalPrice();
         if (totalPrice != 0) {
-            deliveryManagement.processDelivery(foodOrder.getOrderItems());
+            ArrayList<MenuItem> items = foodOrder.getOrderItems();
+            System.out.println("\nScheduling delivery...");
+            // Implement delivery scheduling
+            System.out.println("Delivery scheduled successfully for the following items:");
+
+            int i;
+            for (i = 0; i < menu.getMenuSize(); i++) {
+                int counter = 0;
+                MenuItem t = menu.getMenuItem(i);
+                for (MenuItem item : items) {
+                    if (item.getName().equals(t.getName())) {
+                        counter++;
+                    }
+                }
+                if (counter != 0) {
+                    System.out.println("- " + counter + " " + t.getName());
+                }
+
+            }
         } else {
             System.out.println("sorry, you don't have any item to schedule a delivery for it");
         }

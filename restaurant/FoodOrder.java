@@ -23,4 +23,32 @@ public class FoodOrder {
     public ArrayList<MenuItem> getOrderItems() {
         return orderItems;
     }
+
+    public void removeItemFromOrder(MenuItem item) {
+        if (orderItems.contains(item)) {
+            orderItems.remove(item);
+            totalPrice -= item.getPrice();
+        } else {
+            System.out.println("Item not found in the order!");
+        }
+    }
+
+    public void clearOrder() {
+        orderItems.clear();
+        totalPrice = 0.0;
+    }
+
+    public int getOrderSize() {
+        return orderItems.size();
+    }
+
+    public int getItemQuantity(MenuItem item) {
+        int quantity = 0;
+        for (MenuItem orderItem : orderItems) {
+            if (orderItem.equals(item)) {
+                quantity++;
+            }
+        }
+        return quantity;
+    }
 }
