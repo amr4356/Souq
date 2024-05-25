@@ -1,4 +1,3 @@
-package restaurant;
 
 public class MenuItem {
     private String name;

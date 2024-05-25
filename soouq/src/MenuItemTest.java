@@ -1,8 +1,5 @@
-package restaurantTest;
 
 import org.junit.*;
-
-import restaurant.MenuItem;
 
 public class MenuItemTest {
     private MenuItem menuItem;

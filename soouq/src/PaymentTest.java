@@ -1,8 +1,5 @@
-package restaurantTest;
 
 import org.junit.*;
-
-import restaurant.Payment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -95,7 +92,7 @@ public class PaymentTest {
         Payment.processPayment(70.0, 2);
         assertTrue(payment.isPaid(), "Payment should be marked as paid again");
         assertEquals(70.0, payment.getTotalPrice(), "Total price should be updated to 70.0");
-        assertEquals(2, payment.getPaymentMethod(), "Payment method should be updated to 2"); 
+        assertEquals(2, payment.getPaymentMethod(), "Payment method should be updated to 2");
     }
 
 }

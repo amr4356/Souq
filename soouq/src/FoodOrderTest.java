@@ -1,9 +1,5 @@
-package restaurantTest;
 
 import org.junit.*;
-
-import restaurant.FoodOrder;
-import restaurant.MenuItem;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

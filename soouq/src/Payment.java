@@ -1,4 +1,3 @@
-package restaurant;
 
 public class Payment {
     private static double totalPrice;

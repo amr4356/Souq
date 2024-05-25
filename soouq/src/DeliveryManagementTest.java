@@ -1,9 +1,5 @@
-package restaurantTest;
 
 import org.junit.*;
-
-import restaurant.DeliveryManagement;
-import restaurant.MenuItem;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

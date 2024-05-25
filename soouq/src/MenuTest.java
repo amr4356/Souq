@@ -1,9 +1,5 @@
-package restaurantTest;
 
 import org.junit.*;
-
-import restaurant.Menu;
-import restaurant.MenuItem;
 
 import java.util.ArrayList;
 
