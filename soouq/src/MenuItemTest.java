@@ -1,4 +1,4 @@
-package project;
+
 import org.junit.*;
 
 public class MenuItemTest {

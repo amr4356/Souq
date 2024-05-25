@@ -1,4 +1,3 @@
-package project;
 
 public class MenuItem {
     private String name;

@@ -1,5 +1,4 @@
 // This class represents the user interface for interacting with the restaurant system.
-package project;
 
 import java.util.ArrayList;
 import java.util.Scanner;
